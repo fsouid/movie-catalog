@@ -6,6 +6,7 @@
     <title>OMDb</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/eec9ac1562.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </head>
 
 <header class="navbar">
@@ -30,11 +31,15 @@
                 <h2>Search your favorite movie with OMDb</h2>
                 <div class="input-wrapper">
                     <input type="text" placeholder="Search by Title, Year, or Director">
-                    <button class="not-loading">
+                    <button id="search-btn" class="not-loading" onclick="startLoading()">
                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button id="loading-btn" class="loading is-hidden">
+                        <i class="fa-solid fa-hourglass"></i>
                     </button>
                 </div>
             </div>
+            <img class="drawing" src="./assets/undraw_horror-movie_9020.svg" alt="drawing of girls watching movie">
         </div>
     </div>
 </body>
