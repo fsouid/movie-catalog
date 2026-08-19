@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Streaming Platform</title>
+    <link rel="stylesheet" href="styles-b.css">
+    <script src="https://kit.fontawesome.com/eec9ac1562.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <noscript>
+        <strong>We're sorry but OMDb doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+        <div class="flex flex-col">
+            <div class="navbar flex flex-col">
+                <div class="flex content-wrapper justify-between align-center">
+                    <div class="logo">
+                        <i class="fa-solid fa-film"></i>
+                        <p class="logo-text">OMDb</p>
+                    </div>
+                    <div class="links flex justify-between align-center">
+                        <a href="/" class="link link-main">Movies</a>
+                        <a href="/" class="link">TV Shows</a>
+                        <a href="/" class="link">Watch</a>
+                    </div>
+                    <div class="phone-nav">
+                        <div class="side-menu hide-anim-out">
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="close-btn show"></div>
+                        <div class="showMenu active">
+                            <a href="/" class="link link-main">Movies</a>
+                            <a href="/" class="link">TV Shows</a>
+                            <a href="/" class="link">Watch</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-wrapper flex-col align-center">
+                    <h1>Browse our trending movies</h1>
+                    <div class="input-wrap">
+                        <input type="text" placeholder="Search by Title, Year, or Director">
+                        <div class="search-wrapper flex justify-center align-center">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                </div>
+            </div>
+            <section id="search">
+                <div class="md-progress-bar md-intermediate md-theme default">
+                    <div class="md-progress-bar-track"></div>
+                    <div class="md-progress-bar-fill"></div>
+                    <div class="md-progress-bar-buffer"></div>
+                </div>
+                <div id="filter" class="content-wrapper justify-between">
+                    <h2 class="search-info">
+                        <span class="white-text">Search results:</span>
+                    </h2>
+                </div>
+                <div class="movies">
+                    <div class="content-wrapper">
+                        <div class="loading-state flex justify-center">
+                            <i class="fa-solid fa-hourglass"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
