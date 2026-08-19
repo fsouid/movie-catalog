@@ -2,7 +2,6 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #182a47;
-    color: #fdfdfd;
     box-sizing: border-box;
 }
 
@@ -43,14 +42,13 @@
     align-items: center;
     font-size: 40px;
     padding: 24px;
-    background-color: #ffda9f;
+    background-color: #fcb645;
     border-radius: 50px;
     height: 50px;
 }
 
 .fa-film {
     background: transparent;
-
 }
 
 .logo-text {
@@ -71,6 +69,7 @@
     text-decoration: none;
     font-size: 28px;
     transition: all 300ms ease;
+    color: #fdfdfd;
 }
 
 .link:hover {
@@ -97,18 +96,35 @@ h1 {
     font-size: 58px;
     max-width: 1000px;
     line-height: 1.25;
-    color: #ffda9f;
+    letter-spacing: 0.05em;
+    color: #fcb645;
     text-align: center;
     margin: 50px;
     text-transform: capitalize;
+    animation: fade-up 700ms 800ms backwards;
 }
+
 
 h2 {
     font-size: 28px;
     line-height: 1.5;
+    letter-spacing: 0.1em;
     text-align: center;
     margin: 50px;
     text-transform: capitalize;
+    animation: fade-up 700ms 1200ms backwards;
+    color: #fdfdfd;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .input-wrapper {
@@ -116,6 +132,16 @@ h2 {
     width: 100%;
     position: relative;
     justify-content: center;
+    animation: fade-in 700ms 1800ms backwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 input {
@@ -161,7 +187,8 @@ button:active {
 
 .fa-magnifying-glass {
     background-color: transparent;
-    animation: fade 400ms;
+    animation: fade 600ms ease-in;
+    color: #fcb645;
 }
 
 @keyframes fade {
@@ -194,9 +221,7 @@ button.loading {
 }
 
 .fa-hourglass {
-    animation-name: rotate, fade;
-    animation-duration: 3s, 800ms;
-    animation-iteration-count: infinite, 400ms;
+    animation: rotate 2s infinite;
     background-color: transparent;
 }
 
@@ -217,4 +242,5 @@ button.loading {
     bottom: 80px;
     height: 50vh;
     margin: 6vh 0;
+    animation: fade-in 700ms 2200ms backwards;
 }
