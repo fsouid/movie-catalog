@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #182a47;
+    box-sizing: border-box;
+}
+
+.align-center {
+    align-items: center !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
+}
+
+.flex-col {
+    flex-direction: column !important;
+}
+
+/* NAVBAR */
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.navbar {
+    height: 135px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    font-size: 18px;
+    font-weight: 400;
+    border-bottom: 4px solid #fdfdfd;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    padding: 24px;
+    background-color: #fcb645;
+    border-radius: 50px;
+    height: 50px;
+}
+
+.fa-film {
+    background: transparent;
+}
+
+.logo-text {
+    padding: 0 10px;
+    color: #242424;
+    background: none;
+    font-weight: 600;
+}
+
+
+.navbar .links {
+    display: flex;
+    width: 100%;
+    max-width: 460px;
+}
+
+.navbar .link {
+    text-decoration: none;
+    font-size: 28px;
+    transition: all 300ms ease;
+    color: #fdfdfd;
+}
+
+.link:hover {
+    transform: scale(1.1);
+    border-bottom: 4px solid aliceblue;
+}
+
+.link-main {
+    border: 4px solid #fdfdfd;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.link-main:hover {
+    transform: scale(1.1);
+    color: #182a47;
+    background-color: #fdfdfd;
+}
+
+/* LANDING PAGE */
+
+h1 {
+    font-size: 58px;
+    max-width: 1000px;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+    color: #fcb645;
+    text-align: center;
+    margin: 50px;
+    text-transform: capitalize;
+    animation: fade-up 700ms 800ms backwards;
+}
+
+
+h2 {
+    font-size: 28px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 50px;
+    text-transform: capitalize;
+    animation: fade-up 700ms 1200ms backwards;
+    color: #fdfdfd;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    animation: fade-in 700ms 1800ms backwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+input {
+    background-color: #fdfdfd;
+    border-radius: 20px;
+    border: 2px solid #ffda9f;
+    color: #0b0b0b;
+    display: inline-block;
+    height: 70px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+    font-size: 24px;
+    padding-left: 25px;
+    transition: all 300ms ease;
+}
+
+input:hover {
+    background-color: #ffda9fef;
+    transform: scale(1.01);
+}
+
+
+button {
+    position: relative;
+    width: 200px;
+    margin-left: 20px;
+    font-size: 40px;
+    border: 2px solid #526289;
+    border-radius: 20px;
+    transition: all 300ms ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: #182a47;
+}
+
+.fa-magnifying-glass {
+    background-color: transparent;
+    animation: fade 600ms ease-in;
+    color: #fdfdfd;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+button.not-loading {
+    cursor: pointer;
+}
+
+button.loading {
+    cursor: not-allowed;
+    transition: all;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+button.not-loading,
+button.loading {
+    background-color: #526289;
+    box-shadow: 2px 2px 12px #526289;
+    border: 1px solid #526289;
+}
+
+.fa-hourglass {
+    animation: rotate 2s infinite;
+    background-color: transparent;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.drawing {
+    max-width: max-content;
+    bottom: 80px;
+    height: 50vh;
+    margin: 6vh 0;
+    animation: fade-in 700ms 2200ms backwards;
+}
