@@ -12,3 +12,9 @@ async function startLoading() {
         loadingBtn.classList.add('is-hidden');
     }
 }
+
+// Open/close side menu
+function toggleMenu() {
+    const phoneNav = document.getElementById("phoneNav");
+    phoneNav.classList.toggle("active");
+}

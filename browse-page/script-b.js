@@ -18,10 +18,10 @@ const fetchMovies = async (query) => {
 };
 
 // Fetch movie details
-const fetchMovieDetails = async (imdbID) => {
+const fetchMovieDetails = async (imdbID, key="s") => {
   const apiKey = "bcfa3d7f";
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${apiKey}&s=${imdbID}`
+    `http://www.omdbapi.com/?apikey=${apiKey}&${key}=${imdbID}`
   );
   const data = await response.json();
   return data;
@@ -38,7 +38,7 @@ const displayMovies = (movies) => {
             </div>
             <div class="card-content">
                <span class="movie__title truncate" title="${movie.Title}" data-id="${movie.imdbID}">${movie.Title}</span>
-               <p class="movie__year">Year: ${movie.Year}</p>
+               <p class="movie__year"><b>Year:</b> ${movie.Year}</p>
                <div class="details" data-id="${movie.imdbID}">
                 <!-- Details will be dynamically added here -->
                </div>
@@ -63,12 +63,12 @@ const displayMovies = (movies) => {
         );
 
       // Fetch & display movie details
-      const details = await fetchMovieDetails(imdbID);
+      const details = await fetchMovieDetails(imdbID, "i");
       detailsDiv.innerHTML = `
-            <p class="detail">Genre: ${details.Genre}</p>
-            <p class="detail">Director: ${details.Director}</p>
-            <p class="detail">Actors: ${details.Actors}</p>
-            <p class="detail">Plot: ${details.Plot}</p>
+            <p class="detail"><b>Genre:</b> ${details.Genre}</p>
+            <p class="detail"><b>Director:</b> ${details.Director}</p>
+            <p class="detail"><b>Actors:</b> ${details.Actors}</p>
+            <p class="detail"><b>Plot:</b> ${details.Plot}</p>
             `;
 
       // Show full movie title
@@ -85,10 +85,11 @@ const searchMovies = async () => {
   const query = searchInput.value.trim();
   
   if (query.length > 1) {
+    movieList.innerHTML = "";
     // Activate loading state
     loading.style.display = "block";
     success.style.display = "none";
-    movieList.innerHTML = ""; // Clear old errors or welcome messages
+    document.querySelectorAll(".movie").forEach((item) => (item.style.display = "none"));
 
     setTimeout(async () => {
     try {
@@ -108,11 +109,11 @@ const searchMovies = async () => {
     movieList.innerHTML = "<p>Something went wrong. Please try again later.</p>";
     console.error(error);
   }
-}, 2000);
+}, 2250);
   } else {
     loading.style.display = "none";
     success.style.display = "none";
-    movieList.innerHTML = "<p>Not enough characters</p>";
+    movieList.innerHTML = "<p>Not enough characters...</p>";
   }
 };
 
@@ -123,3 +124,9 @@ searchInput.addEventListener("keypress", function (event) {
     searchMovies();
   }
 });
+
+// Open/close side menu
+function toggleMenu() {
+    const phoneNav = document.getElementById("phoneNav");
+    phoneNav.classList.toggle("active");
+}
