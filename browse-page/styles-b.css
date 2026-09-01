@@ -160,8 +160,10 @@ input {
   animation: fade-up 700ms 800ms backwards;
 }
 
-#search-input:active {
+#search-input:focus {
+  outline: none;
   border: 2px solid #182a47;
+  padding-left: 25px;
 }
 
 .search-wrapper {
