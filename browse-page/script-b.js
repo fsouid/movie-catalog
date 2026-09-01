@@ -11,7 +11,7 @@ const success = document.querySelector(".success-state");
 const fetchMovies = async (query) => {
   const apiKey = "bcfa3d7f";
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${apiKey}&s=${query}`
+    `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}`
   );
   const data = await response.json();
   return data.Search;
@@ -21,7 +21,7 @@ const fetchMovies = async (query) => {
 const fetchMovieDetails = async (imdbID, key="s") => {
   const apiKey = "bcfa3d7f";
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${apiKey}&${key}=${imdbID}`
+    `https://www.omdbapi.com/?apikey=${apiKey}&${key}=${imdbID}`
   );
   const data = await response.json();
   return data;
