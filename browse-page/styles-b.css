@@ -68,7 +68,11 @@ body {
 }
 
 .logo {
-  transition: all 0.15s ease;
+  transition: all 300ms ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 .navbar .logo {
@@ -96,7 +100,7 @@ body {
 
 .link:nth-child(2),
 .link:nth-child(3) {
-    cursor: no-drop;
+  cursor: no-drop;
 }
 
 .navbar .link:hover {
@@ -109,6 +113,17 @@ body {
   color: #242424;
   background: none;
   font-weight: 600;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: transparent;
+}
+
+.logo-link:visited {
+  color: #242424;
 }
 
 h1 {
