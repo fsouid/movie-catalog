@@ -59,6 +59,7 @@ html {
 
 .logo {
   transition: all 300ms ease;
+  cursor: pointer;
 }
 
 .logo:hover {
