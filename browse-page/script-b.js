@@ -6,6 +6,12 @@ const searchButton = document.getElementById("search-button");
 const movieList = document.getElementById("movie-list");
 const loading = document.querySelector(".loading-state");
 const success = document.querySelector(".success-state");
+const sortBy = document.getElementById("sort-by");
+const resetBtn = document.getElementById("reset-filter");
+const sortingBar = document.querySelector(".sorting-bar");
+
+let currentMovies = []; // Store fetched movies
+let originalMovies = []; // Store original fetched movies for reset
 
 // Fetch movies from API
 const fetchMovies = async (query) => {
@@ -14,7 +20,7 @@ const fetchMovies = async (query) => {
     `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}`
   );
   const data = await response.json();
-  return data.Search;
+  return data.Search || []; // Return an empty array if no movies found
 };
 
 // Fetch movie details
@@ -25,6 +31,23 @@ const fetchMovieDetails = async (imdbID, key="s") => {
   );
   const data = await response.json();
   return data;
+};
+
+// Sort movies
+const sortMovies = () => {
+  if (!currentMovies || currentMovies.length === 0) return;
+
+  const sortValue = sortBy.value;
+  if (sortValue === "A-Z") {
+    currentMovies.sort((a, b) => a.Title.localeCompare(b.Title));
+  } else if (sortValue === "Z-A") {
+    currentMovies.sort((a, b) => b.Title.localeCompare(a.Title));
+  } else if (sortValue === "Newest First") {
+    currentMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+  } else if (sortValue === "Oldest First") {
+    currentMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+  }
+  displayMovies(currentMovies);
 };
 
 // Display fetched movies
@@ -89,6 +112,7 @@ const searchMovies = async () => {
     // Activate loading state
     loading.style.display = "block";
     success.style.display = "none";
+    sortingBar.style.display = "none";
     document.querySelectorAll(".movie").forEach((item) => (item.style.display = "none"));
 
     setTimeout(async () => {
@@ -98,14 +122,19 @@ const searchMovies = async () => {
     // Clear loading state
     loading.style.display = "none";
     // Activate success state
-    if (movies) {
-        success.style.display = "block";
-      displayMovies(movies);
+    if (movies && movies.length > 0) {
+      success.style.display = "block";
+      sortingBar.style.display = "flex"; // Show sorting bar when movies are found
+      originalMovies = [...movies]; // Store original movies
+      currentMovies = [...movies]; // Copy original movies to currentMovies
+      sortMovies(); // Sort and display movies based on the selected option
     } else {
       movieList.innerHTML = "<p>No movies found :(</p>";
+      sortingBar.style.display = "none"; // Keep sorting bar hidden when no movies are found
     }
   } catch (error) {
     loading.style.display = "none";
+    sortingBar.style.display = "none"; // Keep sorting bar hidden when an error occurs
     movieList.innerHTML = "<p>Something went wrong. Please try again later.</p>";
     console.error(error);
   }
@@ -113,6 +142,7 @@ const searchMovies = async () => {
   } else {
     loading.style.display = "none";
     success.style.display = "none";
+    sortingBar.style.display = "none"; // Keep sorting bar hidden when input is invalid
     movieList.innerHTML = "<p>Not enough characters...</p>";
   }
 };
@@ -122,6 +152,18 @@ searchButton.addEventListener("click", searchMovies);
 searchInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     searchMovies();
+  }
+});
+
+// Event listener for sort dropdown
+sortBy.addEventListener("change", sortMovies);
+
+// Event listener for reset button
+resetBtn.addEventListener("click", () => {
+  sortBy.value = ""; // Reset sort dropdown
+  if (originalMovies.length > 0) {
+    currentMovies = [...originalMovies];
+    displayMovies(currentMovies);
   }
 });
 
