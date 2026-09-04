@@ -80,7 +80,8 @@ html {
   background: transparent;
 }
 
-.logo-link:visited {
+.logo-link:visited,
+.fa-film:visited {
   color: #242424;
 }
 
